@@ -1,16 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Chase : IReactable
+public class Chase : IReactableBehaviour
 {
-    public void OnTriggerEnter(Collider other)
+    private Transform _chasingTransform;
+    private Transform _source;
+
+    private const float ChasedDistance = 0.1f;
+    private const float Speed = 4f;
+
+    public Chase(Transform chasingTransform, Transform myTransform)
     {
-        throw new System.NotImplementedException();
+        _chasingTransform = chasingTransform;
+        _source = myTransform;
     }
 
     public void React()
     {
-        throw new System.NotImplementedException();
+        Vector3 direction = GetDirectionTo(_chasingTransform);
+        if (direction.magnitude >= ChasedDistance)
+        {
+            _source.Translate(direction.normalized * Speed * Time.deltaTime);
+            Debug.Log("CHASE REACTION");
+        }
     }
+
+    private Vector3 GetDirectionTo(Transform target)
+        => target.position - _source.position;
 }

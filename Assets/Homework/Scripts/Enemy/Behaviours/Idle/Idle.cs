@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Idle : MonoBehaviour, IIdle
+public class Idle : IIdleableBehaviour
 {
-    void IIdle.Idle()
+    void IIdleableBehaviour.Idle()
     {
-        throw new System.NotImplementedException();
+
     }
 }

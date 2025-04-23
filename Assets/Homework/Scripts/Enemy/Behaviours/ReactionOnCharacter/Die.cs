@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class Die : IReactable
+public class Die : IReactableBehaviour
 {
-    public void OnTriggerEnter(Collider other)
+    private GameObject _gameObject;
+
+    public Die(GameObject GameObject)
     {
-        throw new System.NotImplementedException();
+        _gameObject = GameObject;
     }
 
     public void React()
     {
-        throw new System.NotImplementedException();
+        _gameObject.SetActive(false);
+        Debug.Log("DESTROY REACTION");
     }
 }

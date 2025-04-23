@@ -22,11 +22,6 @@ public class MovementHandler : MonoBehaviour
         Control();
     }
 
-    private void ProcessMoveTo(Vector3 direction)
-    {
-        _characterController.Move(direction * _speed * Time.deltaTime);
-    }
-
     private void Control()
     {
         Vector3 input = new Vector3(Input.GetAxisRaw(HorizontalAxisName), 0, Input.GetAxisRaw(VerticalAxisName));
@@ -36,6 +31,11 @@ public class MovementHandler : MonoBehaviour
 
         Vector3 normalizedInput = input.normalized;
 
-        ProcessMoveTo(normalizedInput);
+        Move(normalizedInput);
+    }
+
+    public void Move(Vector3 direction)
+    {
+        _characterController.Move(direction * _speed * Time.deltaTime);
     }
 }
