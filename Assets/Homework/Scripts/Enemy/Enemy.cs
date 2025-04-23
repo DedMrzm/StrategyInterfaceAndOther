@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BehaviourController))]
@@ -16,11 +14,6 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _behaviourController = GetComponent<BehaviourController>();
-    }
-
-    private void Update()
-    {
-        //_behaviourController.UpdateBehaviours();
     }
 
     public void SetBehavioursTypes(ReactionTypes currentReactionType, IdleTypes currentIdleType)
